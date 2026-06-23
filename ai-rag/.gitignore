@@ -1,3 +1,23 @@
+# Python virtual environment
 .venv/
+
+# Python cache
 __pycache__/
 *.pyc
+
+# Environment variables
+.env
+
+# macOS
+.DS_Store
+
+# ChromaDB storage (regenerable via `make ingest`)
+chroma_db/
+
+# Uploaded documents (intentionally not committed; uploaded at runtime)
+documents/
+!documents/.gitkeep
+
+# IDE
+.vscode/
+.idea/

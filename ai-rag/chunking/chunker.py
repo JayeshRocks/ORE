@@ -22,9 +22,11 @@ def chunk_pages(pages, chunk_size=500, overlap=50):
 
     return chunks
 
-import pdf_processor as proc
+import ingestion.pdf_processor as proc
 
-pages = proc.extract_pages("Unit_1.pdf")
+file_path = ""
+
+pages = proc.extract_pages(file_path)
 
 print(chunk_pages(
     pages,

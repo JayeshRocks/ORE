@@ -1,18 +1,12 @@
-# ORE AI-RAG Pipeline dependencies.
-# ---------------------------------
-# PDF ingestion: PyMuPDF (fitz).
-# Chunking: langchain-text-splitters.
-# Embeddings + LLM client: ollama (local model serving).
-# Vector DB: chromadb (persistent client).
-# HTTP API: fastapi + uvicorn + pydantic.
-# Test fixtures: pypdf (parity with rag_playground).
+# Mirror of pyproject.toml [project.dependencies].
+# Prefer `pip install -e ".[dev]"` for development; this file exists so
+# plain `pip install -r requirements.txt` still works for non-editable installs.
 
 pymupdf>=1.24.0
-pypdf>=4.0.0
 langchain-text-splitters>=0.3.0
 ollama>=0.3.0
 chromadb>=0.5.0
 fastapi>=0.110.0
 uvicorn>=0.27.0
 pydantic>=2.6.0
-python-dotenv>=1.0.0
+python-multipart>=0.0.9

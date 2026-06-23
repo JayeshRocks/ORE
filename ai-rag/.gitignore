@@ -1,23 +1,46 @@
-# Python virtual environment
-.venv/
-
-# Python cache
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
 
-# Environment variables
-.env
-
-# macOS
-.DS_Store
-
-# ChromaDB storage (regenerable via `make ingest`)
-chroma_db/
-
-# Uploaded documents (intentionally not committed; uploaded at runtime)
-documents/
-!documents/.gitkeep
+# Virtual env
+.venv/
+venv/
 
 # IDE
 .vscode/
 .idea/
+*.swp
+.DS_Store
+
+# Env
+.env
+.env.local
+
+.pytest_cache/
+htmlcov/
+.tox/
+.mypy_cache/
+
+# Runtime artifacts
+chroma_db/
+documents/*.pdf
+!documents/.gitkeep
+
+# Sample data (kept tiny under tests/data, ignored elsewhere)
+data/*.pdf
+!data/.gitkeep
+
+# Build artifacts
+*.egg-info/
+
+# Tool caches
+.ruff_cache/
+.coverage
+htmlcov/

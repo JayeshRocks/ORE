@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "orerag"
+version = "0.2.0"
+description = "ORE AI-RAG Pipeline — local RAG for the ORE platform (Kaju Open Source)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Kaju Open Source" }]
+keywords = ["rag", "llm", "ollama", "chromadb", "ore", "kaju"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "pymupdf>=1.24.0",
+    "langchain-text-splitters>=0.3.0",
+    "ollama>=0.3.0",
+    "chromadb>=0.5.0",
+    "fastapi>=0.110.0",
+    "uvicorn>=0.27.0",
+    "pydantic>=2.6.0",
+    "python-multipart>=0.0.9",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.5.0",
+]
+
+[project.scripts]
+orerag = "orerag.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/kajuopensource/ore"
+Source = "https://github.com/kajuopensource/ore/tree/main/ai-rag"
+Issues = "https://github.com/kajuopensource/ore/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"orerag" = ["py.typed"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-ra --strict-markers"
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = [
+    "network: hits Ollama / external services (deselect with -m 'not network')",
+    "integration: end-to-end pipeline tests (slower)",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+# Tests rely on fakes/monkeypatching; the warnings are noise here.
+"tests/**" = ["B017", "B006", "ANN", "UP"]
+# FastAPI requires `File(...)` in argument defaults - this is a framework idiom.
+"src/orerag/api/**" = ["B008"]
+
+[tool.coverage.run]
+source = ["orerag"]

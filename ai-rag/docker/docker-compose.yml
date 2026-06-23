@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  orerag:
+    build: ..
+    container_name: orerag
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./chroma_db:/app/chroma_db
+      - ./documents:/app/documents
+    environment:
+      ORERAG_LLM_MODEL: ${ORERAG_LLM_MODEL:-gemma4:31b-cloud}
+      ORERAG_EMBED_MODEL: ${ORERAG_EMBED_MODEL:-nomic-embed-text}
+    # Ollama is expected on the host. If you run Ollama in another container,
+    # uncomment the `extra_hosts` line so the container can reach it.
+    # extra_hosts:
+    #   - "host.docker.internal:host-gateway"

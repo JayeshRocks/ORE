@@ -13,6 +13,7 @@ ore/
 ├── docs/         📚 shared docs
 ├── CONTRIBUTING.md    ← team rules
 ├── COMMANDS.md        ← every shell command (no `make`)
+├── AGENTS.md          ← project context (for future you / AI assistants)
 ├── LICENSE
 └── README.md          ← you are here
 ```

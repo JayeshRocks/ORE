@@ -1,5 +1,21 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import "./globals.css"
 import { TooltipProvider } from "@/components/ui/tooltip"
+import { Inter, JetBrains_Mono } from "next/font/google"
+
+const sans = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+})
+
+export const metadata = {
+  title: "ORE — AI-Powered Academic Knowledge Base",
+  description: "A self-hostable repository for indexing, chunking, and querying scientific literature and PDF documents.",
+}
 
 export default function RootLayout({
   children,
@@ -7,23 +23,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className="dark">
+      <body className={`${sans.variable} ${jetbrainsMono.variable} antialiased bg-black min-h-screen font-sans`}>
         <TooltipProvider>
-          <SidebarProvider>
-            <div className="flex h-screen w-full">
-              {/* This is the sidebar area layout */}
-              <div className="hidden md:block w-64 border-r bg-background">
-                <div className="p-4 font-semibold border-b">ORE Workspace</div>
-              </div>
-              
-              {/* Main application screen area */}
-              <main className="flex-1 overflow-y-auto p-6">
-                <SidebarTrigger className="mb-4" />
-                {children}
-              </main>
-            </div>
-          </SidebarProvider>
+          {children}
         </TooltipProvider>
       </body>
     </html>

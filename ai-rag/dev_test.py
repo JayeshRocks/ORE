@@ -4,7 +4,7 @@ from pdf_chunking import chunk_pages
 from vector_store import store_chunk
 from retriever import retrieve_context
 from generation.answer_questions import answer_questions
-from generation.notes import generate_notes
+from generation.viva import generate_viva
 
 pdf_path = "./tests/data/sample.pdf"
 
@@ -21,7 +21,7 @@ for i, chunk in enumerate(chunks):
 
 pdf_text = extract_pdf_text(pdf_path)
 
-print(generate_notes(pdf_text))
+print(generate_viva(pdf_text))
 
 
 

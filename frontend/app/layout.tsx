@@ -1,13 +1,13 @@
 import "./globals.css"
 import { TooltipProvider } from "@/components/ui/tooltip"
-import { Inter, JetBrains_Mono } from "next/font/google"
+import { Inter, Noto_Serif } from "next/font/google"
 
 const sans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
 })
 
-const jetbrainsMono = JetBrains_Mono({
+const notoSerif = Noto_Serif({
   subsets: ["latin"],
   variable: "--font-mono",
 })
@@ -24,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${sans.variable} ${jetbrainsMono.variable} antialiased bg-black min-h-screen font-sans`}>
+      <body className={`${sans.variable} ${notoSerif.variable} antialiased bg-black min-h-screen font-sans`}>
         <TooltipProvider>
           {children}
         </TooltipProvider>

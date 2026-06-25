@@ -306,26 +306,26 @@ export default function ShadcnDashboard() {
       
       {/* 🖤 Premium shadcn Header */}
       <header className="border-b border-zinc-800/80 bg-black/60 backdrop-blur-md sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2 md:gap-3 overflow-hidden">
             {/* [TEMP] Logo Placeholder */}
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-zinc-900 border border-zinc-800 text-[11px] font-mono text-zinc-400 select-none tracking-tight">
+            <div className="hidden sm:flex items-center gap-1.5 px-2 py-1 rounded bg-zinc-900 border border-zinc-800 text-[11px] font-mono text-zinc-400 select-none tracking-tight shrink-0">
               <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
               <span>[TEMP] LOGO</span>
             </div>
-            <span className="text-zinc-800 font-light">/</span>
-            <div className="flex items-center gap-1.5 hover:bg-zinc-900/60 px-2.5 py-1 rounded-md transition-colors cursor-pointer border border-transparent hover:border-zinc-800/40">
+            <span className="hidden sm:inline text-zinc-800 font-light shrink-0">/</span>
+            <div className="hidden md:flex items-center gap-1.5 hover:bg-zinc-900/60 px-2.5 py-1 rounded-md transition-colors cursor-pointer border border-transparent hover:border-zinc-800/40 shrink-0">
               <div className="w-4 h-4 rounded-md bg-zinc-850 border border-zinc-750 text-[10px] font-bold flex items-center justify-center text-zinc-300">K</div>
               <span className="text-sm font-semibold text-zinc-350">kaju-open-source</span>
             </div>
-            <span className="text-zinc-800 font-light">/</span>
-            <div className="flex items-center gap-1 hover:bg-zinc-900/60 px-2.5 py-1 rounded-md transition-colors cursor-pointer border border-transparent hover:border-zinc-800/40">
-              <span className="text-sm font-bold text-white tracking-wide">ore-repository</span>
-              <span className="text-[10px] border border-zinc-800 bg-zinc-900 text-zinc-500 px-1.5 py-0.2 rounded font-mono">v0.1.0</span>
+            <span className="hidden md:inline text-zinc-800 font-light shrink-0">/</span>
+            <div className="flex items-center gap-1 hover:bg-zinc-900/60 px-2 md:px-2.5 py-1 rounded-md transition-colors cursor-pointer border border-transparent hover:border-zinc-800/40 min-w-0">
+              <span className="text-sm font-bold text-white tracking-wide truncate">ore-repository</span>
+              <span className="text-[10px] border border-zinc-800 bg-zinc-900 text-zinc-500 px-1.5 py-0.2 rounded font-mono shrink-0">v0.1.0</span>
             </div>
           </div>
 
-          <div className="flex items-center gap-3.5">
+          <div className="flex items-center gap-2 md:gap-3.5 shrink-0">
             {/* Status indicator */}
             <div className="hidden md:flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-800/80 bg-zinc-900/30 backdrop-blur-sm">
               {backendStatus === "online" ? (
@@ -347,10 +347,11 @@ export default function ShadcnDashboard() {
             <Button
               onClick={() => fileInputRef.current?.click()}
               size="sm"
-              className="bg-zinc-100 hover:bg-zinc-300 text-black text-sm font-bold px-3 py-1.5 rounded-md cursor-pointer transition-all border border-transparent hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] shrink-0"
+              className="bg-zinc-100 hover:bg-zinc-300 text-black text-sm font-bold px-2.5 sm:px-3 py-1.5 rounded-md cursor-pointer transition-all border border-transparent hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] shrink-0"
             >
               <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
-              Upload PDF
+              <span className="hidden sm:inline">Upload PDF</span>
+              <span className="sm:hidden">Upload</span>
             </Button>
             <input
               ref={fileInputRef}
@@ -363,8 +364,8 @@ export default function ShadcnDashboard() {
         </div>
 
         {/* Navigation Tabs */}
-        <div className="max-w-7xl mx-auto px-6">
-          <nav className="flex items-center gap-6 text-sm tracking-wide uppercase font-semibold">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <nav className="flex items-center gap-4 md:gap-6 text-xs md:text-sm tracking-wide uppercase font-semibold overflow-x-auto scrollbar-none whitespace-nowrap">
             {[
               { id: "overview", label: "Overview", icon: Layers },
               { id: "documents", label: "Ingestions", icon: FileText },
@@ -377,7 +378,7 @@ export default function ShadcnDashboard() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as "overview" | "documents" | "analytics" | "settings")}
-                  className={`py-3.5 border-b-2 flex items-center gap-1.5 font-bold transition-all relative cursor-pointer ${
+                  className={`py-3.5 border-b-2 flex items-center gap-1.5 font-bold transition-all relative cursor-pointer shrink-0 ${
                     isActive
                       ? "border-zinc-200 text-zinc-100"
                       : "border-transparent text-zinc-500 hover:text-zinc-300"
@@ -393,7 +394,7 @@ export default function ShadcnDashboard() {
       </header>
 
       {/* 📦 Main Page Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-6 py-8 z-10">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 md:px-6 py-6 md:py-8 z-10">
 
         {/* ==================== ⚡ OVERVIEW TAB ==================== */}
         {activeTab === "overview" && (
@@ -429,21 +430,21 @@ export default function ShadcnDashboard() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               
               {/* Left Column: Chat Console Box */}
-              <div className="lg:col-span-2 border border-zinc-800/80 rounded-xl bg-zinc-950/40 backdrop-blur-md flex flex-col min-h-[500px] h-[600px] overflow-hidden shadow-xl">
+              <div className="lg:col-span-2 border border-zinc-800/80 rounded-xl bg-zinc-950/40 backdrop-blur-md flex flex-col min-h-[450px] h-[500px] md:h-[600px] overflow-hidden shadow-xl">
                 {/* Chat Header */}
-                <div className="px-5 py-4 border-b border-zinc-800/80 flex items-center justify-between bg-zinc-950/20 backdrop-blur-sm shrink-0">
+                <div className="px-4 md:px-5 py-4 border-b border-zinc-800/80 flex items-center justify-between bg-zinc-950/20 backdrop-blur-sm shrink-0">
                   <div className="flex items-center gap-2">
                     <Sparkles className="w-4 h-4 text-purple-400" />
                     <span className="text-sm font-bold text-white uppercase tracking-wider">Semantic Query Console</span>
                   </div>
-                  <div className="text-xs border border-zinc-800 bg-zinc-900/60 text-zinc-450 px-2.5 py-0.5 rounded-full font-mono uppercase tracking-wider">
+                  <div className="text-[10px] md:text-xs border border-zinc-800 bg-zinc-900/60 text-zinc-450 px-2.5 py-0.5 rounded-full font-mono uppercase tracking-wider">
                     Indexed base
                   </div>
                 </div>
 
-                <div className="flex-1 overflow-y-auto p-5 space-y-6">
+                <div className="flex-1 overflow-y-auto p-4 md:p-5 space-y-4 md:space-y-6">
                   {messages.map((msg) => (
-                    <div key={msg.id} className="flex items-start gap-4">
+                    <div key={msg.id} className="flex items-start gap-3 md:gap-4">
                       {/* Avatar */}
                       <div className={`w-8 h-8 rounded-md border text-[10px] font-bold flex items-center justify-center shrink-0 tracking-wider shadow-sm ${
                         msg.role === "user" 
@@ -454,8 +455,8 @@ export default function ShadcnDashboard() {
                       </div>
 
                       {/* Content */}
-                      <div className="space-y-2.5 max-w-[85%]">
-                        <div className={`p-4 rounded-xl text-[17px] leading-relaxed tracking-wide whitespace-pre-wrap border ${
+                      <div className="space-y-2.5 max-w-[90%] md:max-w-[85%]">
+                        <div className={`p-3 md:p-4 rounded-xl text-sm md:text-[16px] leading-relaxed tracking-wide whitespace-pre-wrap border ${
                           msg.role === "user" 
                             ? "bg-zinc-900/30 text-zinc-100 border-zinc-850" 
                             : "bg-black/40 text-zinc-200 border-zinc-850"
@@ -507,10 +508,10 @@ export default function ShadcnDashboard() {
                           <button
                             key={idx}
                             onClick={() => handleQuery(question)}
-                            className="p-3.5 text-left text-sm bg-zinc-950/40 hover:bg-zinc-900/40 border border-zinc-850 hover:border-zinc-750 rounded-lg text-zinc-300 hover:text-white transition-all cursor-pointer group flex items-start gap-2.5 shadow-sm"
+                            className="p-3 md:p-3.5 text-left text-xs md:text-sm bg-zinc-950/40 hover:bg-zinc-900/40 border border-zinc-850 hover:border-zinc-750 rounded-lg text-zinc-300 hover:text-white transition-all cursor-pointer group flex items-start gap-2.5 shadow-sm"
                           >
                             <Search className="w-3.5 h-3.5 text-zinc-500 group-hover:text-zinc-200 shrink-0 mt-0.5" />
-                            <span className="truncate">{question}</span>
+                            <span className="line-clamp-2 md:truncate">{question}</span>
                           </button>
                         ))}
                       </div>
@@ -521,7 +522,7 @@ export default function ShadcnDashboard() {
                 </div>
 
                 {/* Input Footer */}
-                <div className="p-4 border-t border-zinc-800/80 bg-zinc-950/40 backdrop-blur-sm shrink-0">
+                <div className="p-3 md:p-4 border-t border-zinc-800/80 bg-zinc-950/40 backdrop-blur-sm shrink-0">
                   <form
                     onSubmit={(e) => {
                       e.preventDefault()
@@ -535,10 +536,10 @@ export default function ShadcnDashboard() {
                       placeholder={
                         documents.some((d) => d.status === "ready")
                           ? "Query indexed repository..."
-                          : "Upload a PDF document first in the top-right button..."
+                          : "Upload a PDF document first..."
                       }
                       disabled={!documents.some((d) => d.status === "ready") || isTyping}
-                      className="pr-12 py-5 bg-black/60 border-zinc-800 focus-visible:ring-zinc-800/40 text-zinc-100 placeholder:text-zinc-600 rounded-lg text-sm"
+                      className="pr-12 py-5 bg-black/60 border-zinc-800 focus-visible:ring-zinc-800/40 text-zinc-100 placeholder:text-zinc-650 rounded-lg text-sm"
                     />
                     <Button
                       type="submit"
@@ -620,9 +621,8 @@ export default function ShadcnDashboard() {
                 <p className="text-sm text-zinc-550">Historical document indexing runs styled like Vercel deployments.</p>
               </div>
             </div>
-
-            {/* Document deployments table */}
-            <div className="border border-zinc-800/80 rounded-xl bg-zinc-950/40 backdrop-blur-md overflow-hidden shadow-xl">
+                      {/* Document deployments table (Desktop) */}
+            <div className="hidden md:block border border-zinc-800/80 rounded-xl bg-zinc-950/40 backdrop-blur-md overflow-hidden shadow-xl">
               <table className="w-full text-left text-sm">
                 <thead>
                   <tr className="border-b border-zinc-800 bg-zinc-900/30 text-zinc-500 font-bold uppercase tracking-wider text-xs">
@@ -692,24 +692,100 @@ export default function ShadcnDashboard() {
               </table>
             </div>
 
+            {/* Document deployments cards (Mobile) */}
+            <div className="md:hidden grid grid-cols-1 gap-4">
+              {documents.length === 0 ? (
+                <div className="p-8 text-center border border-zinc-800/80 rounded-xl bg-zinc-950/40 text-zinc-650 font-bold">
+                  No ingestions found.
+                </div>
+              ) : (
+                documents.map((doc) => (
+                  <div key={doc.id} className="border border-zinc-800/80 rounded-xl bg-zinc-950/40 backdrop-blur-md p-4 space-y-4 shadow-md hover:border-zinc-700/60 transition-all">
+                    <div className="flex items-start justify-between gap-2.5">
+                      <div className="flex items-center gap-2 min-w-0">
+                        <FileText className="w-4 h-4 text-zinc-555 shrink-0" />
+                        <span className="font-semibold text-white text-sm truncate" title={doc.name}>{doc.name}</span>
+                      </div>
+                      <button
+                        onClick={(e) => deleteDocument(doc.id, e)}
+                        className="p-1 text-zinc-550 hover:text-red-400 hover:bg-red-500/5 rounded transition-all cursor-pointer shrink-0"
+                        title="Remove document index"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3 text-xs">
+                      <div>
+                        <span className="text-zinc-555 block font-bold uppercase tracking-wider text-[10px]">Status</span>
+                        <div className="mt-1">
+                          {doc.status === "ready" && (
+                            <span className="inline-flex items-center gap-1 text-emerald-400 font-bold uppercase tracking-wide">
+                              <span className="w-1 h-1 rounded-full bg-emerald-450 shadow-[0_0_6px_rgba(52,211,153,0.6)]" /> Ready
+                            </span>
+                          )}
+                          {doc.status === "failed" && (
+                            <span className="inline-flex items-center gap-1 text-red-500 font-bold uppercase tracking-wide">
+                              <span className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_6px_rgba(239,68,68,0.6)]" /> Failed
+                            </span>
+                          )}
+                          {doc.status !== "ready" && doc.status !== "failed" && (
+                            <span className="inline-flex items-center gap-1 text-amber-500 font-bold uppercase tracking-wide animate-pulse">
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_6px_rgba(245,158,11,0.6)]" /> {doc.status}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      <div>
+                        <span className="text-zinc-555 block font-bold uppercase tracking-wider text-[10px]">Chunks</span>
+                        <span className="font-mono text-zinc-300 block mt-1">{doc.chunksCount ?? "--"}</span>
+                      </div>
+
+                      <div>
+                        <span className="text-zinc-555 block font-bold uppercase tracking-wider text-[10px]">Created</span>
+                        <span className="text-zinc-350 block mt-1">{doc.created}</span>
+                      </div>
+
+                      <div>
+                        <span className="text-zinc-555 block font-bold uppercase tracking-wider text-[10px]">Environment</span>
+                        <span className="inline-block mt-1 text-[9px] border border-zinc-800 bg-zinc-900 text-zinc-450 px-1.5 py-0.2 rounded font-mono uppercase tracking-wider font-bold">
+                          {doc.environment}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="pt-3 border-t border-zinc-850/60">
+                      <button
+                        onClick={() => setViewingLogsDoc(doc)}
+                        className="w-full bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 hover:border-zinc-700 text-zinc-300 text-xs py-2 rounded-md transition-colors flex items-center justify-center gap-1.5 font-bold cursor-pointer hover:text-white"
+                      >
+                        <TerminalIcon className="w-3.5 h-3.5 text-zinc-400" /> View Pipeline Logs
+                      </button>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+
             {/* Simulated terminal logs box if clicked */}
             {viewingLogsDoc && (
               <div className="border border-zinc-800/80 rounded-xl bg-zinc-950/60 backdrop-blur-md overflow-hidden flex flex-col h-80 animate-in slide-in-from-bottom duration-350 shadow-2xl">
                 <div className="px-4 py-3 bg-zinc-900/60 border-b border-zinc-800/80 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <TerminalIcon className="w-3.5 h-3.5 text-zinc-300" />
-                    <span className="text-sm text-white font-bold font-mono">Build Ingestion Pipeline Log: {viewingLogsDoc.name}</span>
+                  <div className="flex items-center gap-2 min-w-0">
+                    <TerminalIcon className="w-3.5 h-3.5 text-zinc-300 shrink-0" />
+                    <span className="text-xs md:text-sm text-white font-bold font-mono truncate">Log: {viewingLogsDoc.name}</span>
                   </div>
                   <button
                     onClick={() => setViewingLogsDoc(null)}
-                    className="text-zinc-500 hover:text-zinc-300 text-sm font-bold font-mono cursor-pointer"
+                    className="text-zinc-500 hover:text-zinc-300 text-xs md:text-sm font-bold font-mono cursor-pointer shrink-0"
                   >
                     Close
                   </button>
                 </div>
-                <div className="flex-1 bg-black p-4 overflow-y-auto font-mono text-[16px] text-zinc-300 space-y-2.5 scrollbar-thin tracking-tight leading-relaxed">
+                <div className="flex-1 bg-black p-3.5 md:p-4 overflow-y-auto font-mono text-[13px] md:text-[15px] text-zinc-300 space-y-2 md:space-y-2.5 scrollbar-thin tracking-tight leading-relaxed">
                   {viewingLogsDoc.logs.map((log, index) => (
-                    <div key={index} className="flex gap-4">
+                    <div key={index} className="flex gap-3 md:gap-4">
                       <span className="text-zinc-650 shrink-0 select-none">[{log.timestamp}]</span>
                       <span className={`shrink-0 font-bold select-none ${
                         log.level === "ERROR" ? "text-red-500" : log.level === "WARNING" ? "text-amber-500" : "text-emerald-400"
